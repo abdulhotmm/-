@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="sd" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — سومرا برادري</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+  body {
+    background: linear-gradient(135deg, #0f3d2e 0%, #1a5c45 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #fff;
+  }
+  .login-box {
+    background: #fff;
+    color: #222;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  .login-box h1 {
+    color: #0f3d2e;
+    margin-bottom: 8px;
+    font-size: 24px;
+  }
+  .login-box p {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 14px;
+  }
+  .login-box input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    text-align: right;
+    transition: border 0.3s;
+  }
+  .login-box input:focus {
+    outline: none;
+    border-color: #0f3d2e;
+  }
+  .login-box button {
+    width: 100%;
+    padding: 14px;
+    background: #0f3d2e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .login-box button:hover {
+    background: #1a5c45;
+  }
+  .message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: none;
+  }
+  .message.error {
+    background: #ffe0e0;
+    color: #c00;
+    display: block;
+  }
+  .message.success {
+    background: #e0ffe0;
+    color: #080;
+    display: block;
+  }
+  .back-link {
+    display: block;
+    margin-top: 20px;
+    color: #0f3d2e;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="login-box">
+  <h1>🔐 Admin Panel</h1>
+  <p>سومرا برادري ميرپورماٿيلو</p>
+
+  <input type="text" id="username" placeholder="يوزر نالو" autocomplete="off">
+  <input type="password" id="password" placeholder="پاسورڊ" autocomplete="off">
+  <button onclick="login()">لاگ ان ڪريو</button>
+
+  <div id="message" class="message"></div>
+
+  <a href="index.html" class="back-link">← واپس Website تي وڃو</a>
+</div>
+
+<script>
+  const ADMIN_USERNAME = "admin";
+  const ADMIN_PASSWORD = "somra2024";
+
+  function login() {
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
+    const msg = document.getElementById("message");
+
+    if (user === ADMIN_USERNAME && pass === ADMIN_PASSWORD) {
+      msg.className = "message success";
+      msg.textContent = "✅ لاگ ان ڪامياب! هاڻي توهان Admin Panel ۾ داخل ٿي رهيا آهيو...";
+      setTimeout(() => {
+        alert("لاگ ان ڪامياب! اڳيون قدم: Admin Dashboard");
+      }, 800);
+    } else {
+      msg.className = "message error";
+      msg.textContent = "❌ غلط يوزر نالو يا پاسورڊ. ٻيهر ڪوشش ڪريو.";
+    }
+  }
+</script>
+
+</body>
+</html>
