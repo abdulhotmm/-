@@ -3,129 +3,358 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel — سومرا برادري</title>
+<title>Admin Dashboard — سومرا برادري</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-  body {
+  body { background: #f0f4f2; min-height: 100vh; color: #222; }
+  .header {
     background: linear-gradient(135deg, #0f3d2e 0%, #1a5c45 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    color: #fff;
+    color: #fff; padding: 18px 25px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   }
-  .login-box {
-    background: #fff;
-    color: #222;
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+  .header h1 { font-size: 20px; }
+  .header .user-info { font-size: 14px; opacity: 0.9; margin-left: 12px; }
+  .logout-btn {
+    background: #c0392b; color: #fff; border: none;
+    padding: 10px 18px; border-radius: 8px; cursor: pointer;
+    font-size: 14px; font-weight: bold;
   }
-  .login-box h1 {
-    color: #0f3d2e;
-    margin-bottom: 8px;
-    font-size: 24px;
+  .logout-btn:hover { background: #a93226; }
+  .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+  .welcome {
+    background: #fff; padding: 25px; border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06); margin-bottom: 25px;
+    border-right: 5px solid #0f3d2e;
   }
-  .login-box p {
-    color: #666;
-    margin-bottom: 25px;
-    font-size: 14px;
+  .welcome h2 { color: #0f3d2e; margin-bottom: 8px; font-size: 22px; }
+  .welcome p { color: #555; font-size: 15px; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px; margin-bottom: 30px;
   }
-  .login-box input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 15px;
-    text-align: right;
-    transition: border 0.3s;
+  .card {
+    background: #fff; padding: 25px 20px; border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06); cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s; text-align: center;
   }
-  .login-box input:focus {
-    outline: none;
-    border-color: #0f3d2e;
+  .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(15,61,46,0.2); }
+  .card .icon { font-size: 40px; margin-bottom: 12px; }
+  .card h3 { color: #0f3d2e; font-size: 18px; margin-bottom: 6px; }
+  .card p { color: #777; font-size: 13px; }
+  .panel {
+    background: #fff; padding: 30px; border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06); margin-bottom: 25px; display: none;
   }
-  .login-box button {
-    width: 100%;
-    padding: 14px;
-    background: #0f3d2e;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
+  .panel.active { display: block; }
+  .panel h2 { color: #0f3d2e; margin-bottom: 20px; font-size: 22px; }
+  .panel label { display: block; margin-bottom: 6px; color: #333; font-weight: bold; font-size: 14px; }
+  .panel input, .panel textarea {
+    width: 100%; padding: 12px; margin-bottom: 15px;
+    border: 2px solid #ddd; border-radius: 8px; font-size: 15px;
+    font-family: inherit; text-align: right;
   }
-  .login-box button:hover {
-    background: #1a5c45;
+  .panel input:focus, .panel textarea:focus { outline: none; border-color: #0f3d2e; }
+  .panel textarea { min-height: 120px; resize: vertical; }
+  .panel .btn {
+    background: #0f3d2e; color: #fff; border: none;
+    padding: 13px 25px; border-radius: 8px; font-size: 15px;
+    font-weight: bold; cursor: pointer;
   }
+  .panel .btn:hover { background: #1a5c45; }
+  .panel .btn.cancel { background: #999; margin-right: 10px; }
+  .panel .btn.cancel:hover { background: #777; }
   .message {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 14px;
-    display: none;
+    margin-top: 15px; padding: 12px; border-radius: 8px;
+    font-size: 14px; display: none;
   }
-  .message.error {
-    background: #ffe0e0;
-    color: #c00;
-    display: block;
+  .message.success { background: #e0ffe0; color: #080; display: block; }
+  .message.error { background: #ffe0e0; color: #c00; display: block; }
+  .items-list { margin-top: 20px; }
+  .item {
+    background: #f9fbfa; padding: 15px; border-radius: 10px;
+    border-right: 4px solid #0f3d2e; margin-bottom: 12px;
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 10px;
   }
-  .message.success {
-    background: #e0ffe0;
-    color: #080;
-    display: block;
+  .item .item-content { flex: 1; }
+  .item h4 { color: #0f3d2e; margin-bottom: 5px; font-size: 16px; }
+  .item .meta { font-size: 12px; color: #888; margin-bottom: 6px; }
+  .item p { color: #555; font-size: 14px; line-height: 1.5; }
+  .item .delete-btn {
+    background: #e74c3c; color: #fff; border: none;
+    padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 13px;
   }
-  .back-link {
-    display: block;
-    margin-top: 20px;
-    color: #0f3d2e;
-    text-decoration: none;
-    font-size: 14px;
+  .item .delete-btn:hover { background: #c0392b; }
+  @media (max-width: 600px) {
+    .header h1 { font-size: 15px; }
+    .welcome h2 { font-size: 18px; }
+    .panel { padding: 20px; }
+    .panel .btn { width: 100%; }
+    .panel .btn.cancel { margin-right: 0; margin-top: 10px; }
   }
-  .back-link:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-<div class="login-box">
-  <h1>🔐 Admin Panel</h1>
-  <p>سومرا برادري ميرپورماٿيلو</p>
+<div class="header">
+  <h1>🔐 Admin Dashboard — سومرا برادري</h1>
+  <div>
+    <span class="user-info">👤 admin</span>
+    <button class="logout-btn" onclick="logout()">لاگ آئوٽ</button>
+  </div>
+</div>
 
-  <input type="text" id="username" placeholder="يوزر نالو" autocomplete="off">
-  <input type="password" id="password" placeholder="پاسورڊ" autocomplete="off">
-  <button onclick="login()">لاگ ان ڪريو</button>
+<div class="container">
 
-  <div id="message" class="message"></div>
+  <div class="welcome">
+    <h2>خوش آمديد! 👋</h2>
+    <p>هتي کان توهان پنهنجي Website جو مواد سنڀالي سگهو ٿا.</p>
+  </div>
 
-  <a href="index.html" class="back-link">← واپس Website تي وڃو</a>
+  <div class="grid">
+    <div class="card" onclick="showPanel('news')">
+      <div class="icon">📰</div>
+      <h3>خبر شامل ڪريو</h3>
+      <p>نئين خبر يا اعلان لکو</p>
+    </div>
+    <div class="card" onclick="showPanel('gallery')">
+      <div class="icon">📸</div>
+      <h3>تصوير شامل ڪريو</h3>
+      <p>Gallery لاءِ تصوير</p>
+    </div>
+    <div class="card" onclick="showPanel('event')">
+      <div class="icon">📅</div>
+      <h3>تقريب شامل ڪريو</h3>
+      <p>نئين تقريب يا پروگرام</p>
+    </div>
+    <div class="card" onclick="showPanel('family')">
+      <div class="icon">👥</div>
+      <h3>خاندان شامل ڪريو</h3>
+      <p>خانداني شجرو</p>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-news">
+    <h2>📰 نئين خبر شامل ڪريو</h2>
+    <label>عنوان</label>
+    <input type="text" id="news-title" placeholder="خبر جو عنوان لکو...">
+    <label>تفصيل</label>
+    <textarea id="news-desc" placeholder="خبر جي تفصيل لکو..."></textarea>
+    <label>تاريخ</label>
+    <input type="date" id="news-date">
+    <button class="btn" onclick="saveNews()">محفوظ ڪريو</button>
+    <button class="btn cancel" onclick="hidePanel('news')">رد ڪريو</button>
+    <div class="message" id="news-msg"></div>
+    <div class="items-list" id="news-list"></div>
+  </div>
+
+  <div class="panel" id="panel-gallery">
+    <h2>📸 تصوير شامل ڪريو</h2>
+    <label>تصوير جو عنوان</label>
+    <input type="text" id="img-title" placeholder="تصوير جو عنوان...">
+    <label>تصوير جو لنڪ (URL)</label>
+    <input type="text" id="img-url" placeholder="https://...">
+    <label>تفصيل</label>
+    <input type="text" id="img-desc" placeholder="تصوير جي باري ۾...">
+    <button class="btn" onclick="saveImage()">محفوظ ڪريو</button>
+    <button class="btn cancel" onclick="hidePanel('gallery')">رد ڪريو</button>
+    <div class="message" id="gallery-msg"></div>
+    <div class="items-list" id="gallery-list"></div>
+  </div>
+
+  <div class="panel" id="panel-event">
+    <h2>📅 نئين تقريب شامل ڪريو</h2>
+    <label>تقريب جو نالو</label>
+    <input type="text" id="evt-title" placeholder="تقريب جو نالو...">
+    <label>تاريخ</label>
+    <input type="date" id="evt-date">
+    <label>هنڌ</label>
+    <input type="text" id="evt-place" placeholder="تقريب جو هنڌ...">
+    <label>تفصيل</label>
+    <textarea id="evt-desc" placeholder="تقريب جي تفصيل..."></textarea>
+    <button class="btn" onclick="saveEvent()">محفوظ ڪريو</button>
+    <button class="btn cancel" onclick="hidePanel('event')">رد ڪريو</button>
+    <div class="message" id="event-msg"></div>
+    <div class="items-list" id="event-list"></div>
+  </div>
+
+  <div class="panel" id="panel-family">
+    <h2>👥 خاندان شامل ڪريو</h2>
+    <label>خاندان جو نالو</label>
+    <input type="text" id="fam-name" placeholder="خاندان جو نالو...">
+    <label>سربراهه جو نالو</label>
+    <input type="text" id="fam-head" placeholder="سربراهه جو نالو...">
+    <label>تفصيل</label>
+    <textarea id="fam-desc" placeholder="خاندان جي باري ۾..."></textarea>
+    <button class="btn" onclick="saveFamily()">محفوظ ڪريو</button>
+    <button class="btn cancel" onclick="hidePanel('family')">رد ڪريو</button>
+    <div class="message" id="family-msg"></div>
+    <div class="items-list" id="family-list"></div>
+  </div>
+
 </div>
 
 <script>
-  const ADMIN_USERNAME = "admin";
-  const ADMIN_PASSWORD = "somra2024";
+  if (sessionStorage.getItem("somra_admin") !== "yes") {
+    window.location.href = "admin-login.html";
+  }
 
-  function login() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value.trim();
-    const msg = document.getElementById("message");
-
-    if (user === ADMIN_USERNAME && pass === ADMIN_PASSWORD) {
-      msg.className = "message success";
-      msg.textContent = "✅ لاگ ان ڪامياب! هاڻي توهان Admin Panel ۾ داخل ٿي رهيا آهيو...";
-      setTimeout(() => {
-        alert("لاگ ان ڪامياب! اڳيون قدم: Admin Dashboard");
-      }, 800);
-    } else {
-      msg.className = "message error";
-      msg.textContent = "❌ غلط يوزر نالو يا پاسورڊ. ٻيهر ڪوشش ڪريو.";
+  function logout() {
+    if (confirm("ڇا توهان واقعي لاگ آئوٽ ڪرڻ چاهيو ٿا؟")) {
+      sessionStorage.removeItem("somra_admin");
+      window.location.href = "admin-login.html";
     }
   }
+
+  function showPanel(name) {
+    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+    document.getElementById("panel-" + name).classList.add("active");
+    document.getElementById("panel-" + name).scrollIntoView({ behavior: "smooth" });
+    renderAll();
+  }
+  function hidePanel(name) {
+    document.getElementById("panel-" + name).classList.remove("active");
+  }
+
+  function getData(key) { return JSON.parse(localStorage.getItem(key) || "[]"); }
+  function setData(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
+
+  function saveNews() {
+    const title = document.getElementById("news-title").value.trim();
+    const desc = document.getElementById("news-desc").value.trim();
+    const date = document.getElementById("news-date").value;
+    const msg = document.getElementById("news-msg");
+    if (!title || !desc) { msg.className = "message error"; msg.textContent = "❌ عنوان ۽ تفصيل لازمي آهن."; return; }
+    const news = getData("somra_news");
+    news.unshift({ id: Date.now(), title, desc, date: date || new Date().toISOString().split("T")[0] });
+    setData("somra_news", news);
+    document.getElementById("news-title").value = "";
+    document.getElementById("news-desc").value = "";
+    document.getElementById("news-date").value = "";
+    msg.className = "message success";
+    msg.textContent = "✅ خبر محفوظ ٿي وئي!";
+    renderAll();
+  }
+
+  function saveImage() {
+    const title = document.getElementById("img-title").value.trim();
+    const url = document.getElementById("img-url").value.trim();
+    const desc = document.getElementById("img-desc").value.trim();
+    const msg = document.getElementById("gallery-msg");
+    if (!title || !url) { msg.className = "message error"; msg.textContent = "❌ عنوان ۽ تصوير جو لنڪ لازمي آهن."; return; }
+    const imgs = getData("somra_gallery");
+    imgs.unshift({ id: Date.now(), title, url, desc });
+    setData("somra_gallery", imgs);
+    document.getElementById("img-title").value = "";
+    document.getElementById("img-url").value = "";
+    document.getElementById("img-desc").value = "";
+    msg.className = "message success";
+    msg.textContent = "✅ تصوير محفوظ ٿي وئي!";
+    renderAll();
+  }
+
+  function saveEvent() {
+    const title = document.getElementById("evt-title").value.trim();
+    const date = document.getElementById("evt-date").value;
+    const place = document.getElementById("evt-place").value.trim();
+    const desc = document.getElementById("evt-desc").value.trim();
+    const msg = document.getElementById("event-msg");
+    if (!title || !date) { msg.className = "message error"; msg.textContent = "❌ نالو ۽ تاريخ لازمي آهن."; return; }
+    const events = getData("somra_events");
+    events.unshift({ id: Date.now(), title, date, place, desc });
+    setData("somra_events", events);
+    document.getElementById("evt-title").value = "";
+    document.getElementById("evt-date").value = "";
+    document.getElementById("evt-place").value = "";
+    document.getElementById("evt-desc").value = "";
+    msg.className = "message success";
+    msg.textContent = "✅ تقريب محفوظ ٿي وئي!";
+    renderAll();
+  }
+
+  function saveFamily() {
+    const name = document.getElementById("fam-name").value.trim();
+    const head = document.getElementById("fam-head").value.trim();
+    const desc = document.getElementById("fam-desc").value.trim();
+    const msg = document.getElementById("family-msg");
+    if (!name) { msg.className = "message error"; msg.textContent = "❌ خاندان جو نالو لازمي آهي."; return; }
+    const fams = getData("somra_family");
+    fams.unshift({ id: Date.now(), name, head, desc });
+    setData("somra_family", fams);
+    document.getElementById("fam-name").value = "";
+    document.getElementById("fam-head").value = "";
+    document.getElementById("fam-desc").value = "";
+    msg.className = "message success";
+    msg.textContent = "✅ خاندان محفوظ ٿي ويو!";
+    renderAll();
+  }
+
+  function deleteItem(key, id) {
+    if (!confirm("ڇا توهان هي واقعي ڊاهڻ چاهيو ٿا؟")) return;
+    let data = getData(key);
+    data = data.filter(item => item.id !== id);
+    setData(key, data);
+    renderAll();
+  }
+
+  function renderAll() {
+    const news = getData("somra_news");
+    document.getElementById("news-list").innerHTML = news.map(n => `
+      <div class="item">
+        <div class="item-content">
+          <h4>${escapeHtml(n.title)}</h4>
+          <div class="meta">📅 ${n.date}</div>
+          <p>${escapeHtml(n.desc)}</p>
+        </div>
+        <button class="delete-btn" onclick="deleteItem('somra_news', ${n.id})">🗑️</button>
+      </div>
+    `).join("");
+
+    const imgs = getData("somra_gallery");
+    document.getElementById("gallery-list").innerHTML = imgs.map(i => `
+      <div class="item">
+        <div class="item-content">
+          <h4>${escapeHtml(i.title)}</h4>
+          <p>${escapeHtml(i.desc || "")}</p>
+          <div class="meta">🔗 ${escapeHtml(i.url)}</div>
+        </div>
+        <button class="delete-btn" onclick="deleteItem('somra_gallery', ${i.id})">🗑️</button>
+      </div>
+    `).join("");
+
+    const events = getData("somra_events");
+    document.getElementById("event-list").innerHTML = events.map(e => `
+      <div class="item">
+        <div class="item-content">
+          <h4>${escapeHtml(e.title)}</h4>
+          <div class="meta">📅 ${e.date} ${e.place ? "• 📍 " + escapeHtml(e.place) : ""}</div>
+          <p>${escapeHtml(e.desc || "")}</p>
+        </div>
+        <button class="delete-btn" onclick="deleteItem('somra_events', ${e.id})">🗑️</button>
+      </div>
+    `).join("");
+
+    const fams = getData("somra_family");
+    document.getElementById("family-list").innerHTML = fams.map(f => `
+      <div class="item">
+        <div class="item-content">
+          <h4>${escapeHtml(f.name)}</h4>
+          ${f.head ? '<div class="meta">👤 ' + escapeHtml(f.head) + '</div>' : ''}
+          <p>${escapeHtml(f.desc || "")}</p>
+        </div>
+        <button class="delete-btn" onclick="deleteItem('somra_family', ${f.id})">🗑️</button>
+      </div>
+    `).join("");
+  }
+
+  function escapeHtml(s) {
+    return String(s || "").replace(/[&<>"']/g, c => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    })[c]);
+  }
+
+  renderAll();
 </script>
 
 </body>
