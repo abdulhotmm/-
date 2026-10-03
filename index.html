@@ -7,11 +7,7 @@
 <title>سومرا برادري ميرپورماٿيلو</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{ margin:0; padding:0; box-sizing:border-box; }
 
 body{
     font-family:"Noto Naskh Arabic","Segoe UI",Tahoma,sans-serif;
@@ -20,10 +16,7 @@ body{
     line-height:1.9;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
-}
+a{ text-decoration:none; color:inherit; }
 
 /* TOP BAR */
 .topbar{
@@ -54,65 +47,32 @@ header{
     align-items:center;
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+.logo{ display:flex; align-items:center; gap:12px; }
 
 .logo-icon{
-    width:52px;
-    height:52px;
+    width:52px; height:52px;
     border-radius:50%;
     background:linear-gradient(135deg,#176b4b,#d6a84f);
     color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:flex; align-items:center; justify-content:center;
     font-size:26px;
     box-shadow:0 5px 15px rgba(0,0,0,.15);
 }
 
-.logo-text h1{
-    font-size:22px;
-    color:#123c2d;
-}
+.logo-text h1{ font-size:22px; color:#123c2d; }
+.logo-text p{ font-size:12px; color:#777; }
 
-.logo-text p{
-    font-size:12px;
-    color:#777;
-}
+nav{ display:flex; gap:25px; }
+nav a{ color:#333; font-weight:600; transition:.3s; }
+nav a:hover{ color:#176b4b; }
 
-nav{
-    display:flex;
-    gap:25px;
-}
-
-nav a{
-    color:#333;
-    font-weight:600;
-    transition:.3s;
-}
-
-nav a:hover{
-    color:#176b4b;
-}
-
-.menu-btn{
-    display:none;
-    font-size:28px;
-    cursor:pointer;
-}
+.menu-btn{ display:none; font-size:28px; cursor:pointer; }
 
 /* HERO */
 .hero{
     min-height:560px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; position:relative; overflow:hidden;
     background:
         linear-gradient(rgba(8,48,34,.78),rgba(8,48,34,.86)),
         radial-gradient(circle at 20% 20%,#4b9672,transparent 35%),
@@ -121,11 +81,7 @@ nav a:hover{
     color:white;
 }
 
-.hero-content{
-    max-width:850px;
-    padding:50px 20px;
-    animation:fadeUp 1.2s ease;
-}
+.hero-content{ max-width:850px; padding:50px 20px; animation:fadeUp 1.2s ease; }
 
 .hero-badge{
     display:inline-block;
@@ -136,28 +92,11 @@ nav a:hover{
     font-size:15px;
 }
 
-.hero h2{
-    font-size:48px;
-    line-height:1.4;
-    margin-bottom:15px;
-}
+.hero h2{ font-size:48px; line-height:1.4; margin-bottom:15px; }
+.hero h2 span{ color:#e6bd69; }
+.hero p{ font-size:20px; color:#eef5f0; margin-bottom:30px; }
 
-.hero h2 span{
-    color:#e6bd69;
-}
-
-.hero p{
-    font-size:20px;
-    color:#eef5f0;
-    margin-bottom:30px;
-}
-
-.buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-}
+.buttons{ display:flex; justify-content:center; gap:15px; flex-wrap:wrap; }
 
 .btn{
     padding:11px 25px;
@@ -167,52 +106,19 @@ nav a:hover{
     display:inline-block;
 }
 
-.btn-main{
-    background:#d6a84f;
-    color:#18382b;
-}
+.btn-main{ background:#d6a84f; color:#18382b; }
+.btn-main:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,.2); }
 
-.btn-main:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 20px rgba(0,0,0,.2);
-}
-
-.btn-outline{
-    border:1px solid white;
-    color:white;
-}
-
-.btn-outline:hover{
-    background:white;
-    color:#123c2d;
-}
+.btn-outline{ border:1px solid white; color:white; }
+.btn-outline:hover{ background:white; color:#123c2d; }
 
 /* SECTION */
-section{
-    max-width:1200px;
-    margin:auto;
-    padding:70px 5%;
-}
+section{ max-width:1200px; margin:auto; padding:70px 5%; }
 
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
-}
-
-.section-title small{
-    color:#b38330;
-    font-weight:bold;
-}
-
-.section-title h2{
-    font-size:32px;
-    color:#123c2d;
-    margin:5px 0;
-}
-
-.section-title p{
-    color:#777;
-}
+.section-title{ text-align:center; margin-bottom:45px; }
+.section-title small{ color:#b38330; font-weight:bold; }
+.section-title h2{ font-size:32px; color:#123c2d; margin:5px 0; }
+.section-title p{ color:#777; }
 
 /* CARDS */
 .cards{
@@ -231,38 +137,22 @@ section{
     border-bottom:3px solid transparent;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    border-bottom-color:#d6a84f;
-}
+.card:hover{ transform:translateY(-8px); border-bottom-color:#d6a84f; }
 
 .card-icon{
-    width:65px;
-    height:65px;
+    width:65px; height:65px;
     margin:0 auto 15px;
     border-radius:50%;
     background:#eaf3ee;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:flex; align-items:center; justify-content:center;
     font-size:30px;
 }
 
-.card h3{
-    color:#123c2d;
-    margin-bottom:8px;
-}
-
-.card p{
-    color:#777;
-    font-size:14px;
-}
+.card h3{ color:#123c2d; margin-bottom:8px; }
+.card p{ color:#777; font-size:14px; }
 
 /* ABOUT */
-.about{
-    background:white;
-    max-width:none;
-}
+.about{ background:white; max-width:none; }
 
 .about-inner{
     max-width:1100px;
@@ -281,15 +171,8 @@ section{
     border-right:5px solid #d6a84f;
 }
 
-.about-box h3{
-    color:#123c2d;
-    font-size:27px;
-    margin-bottom:15px;
-}
-
-.about-box p{
-    color:#555;
-}
+.about-box h3{ color:#123c2d; font-size:27px; margin-bottom:15px; }
+.about-box p{ color:#555; }
 
 /* NEWS */
 .news{
@@ -303,31 +186,81 @@ section{
     border-radius:18px;
     overflow:hidden;
     box-shadow:0 5px 20px rgba(0,0,0,.07);
+    transition:.3s;
 }
+
+.news-card:hover{ transform:translateY(-5px); box-shadow:0 12px 30px rgba(15,61,46,.12); }
 
 .news-img{
     height:160px;
     background:linear-gradient(135deg,#176b4b,#d6a84f);
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:flex; align-items:center; justify-content:center;
     color:white;
     font-size:50px;
 }
 
-.news-content{
-    padding:20px;
+.news-content{ padding:20px; }
+.news-date{ color:#b38330; font-size:13px; font-weight:bold; }
+.news-content h3{ color:#123c2d; margin:7px 0; font-size:17px; }
+.news-content p{ color:#555; font-size:14px; line-height:1.7; }
+
+/* GALLERY ITEMS */
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
 }
 
-.news-date{
-    color:#b38330;
-    font-size:13px;
+.gallery-item{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+    transition:.3s;
 }
 
-.news-content h3{
-    color:#123c2d;
-    margin:7px 0;
+.gallery-item:hover{ transform:translateY(-5px); }
+
+.gallery-item img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    display:block;
 }
+
+.gallery-item .gallery-info{ padding:15px 18px; }
+.gallery-item h3{ color:#123c2d; font-size:16px; margin-bottom:5px; }
+.gallery-item p{ color:#666; font-size:13px; }
+
+/* EVENTS */
+.events-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.event-item{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+    border-right:5px solid #d6a84f;
+}
+
+.event-item h3{ color:#123c2d; font-size:19px; margin-bottom:8px; }
+.event-meta{ color:#b38330; font-size:13px; font-weight:bold; margin-bottom:10px; }
+.event-item p{ color:#555; font-size:14px; line-height:1.7; }
+
+/* EMPTY MESSAGE */
+.empty-msg{
+    text-align:center;
+    padding:40px 20px;
+    color:#888;
+    background:white;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+.empty-msg .icon{ font-size:50px; margin-bottom:10px; display:block; }
 
 /* CTA */
 .cta{
@@ -338,15 +271,8 @@ section{
     padding:70px 5%;
 }
 
-.cta h2{
-    font-size:32px;
-    margin-bottom:10px;
-}
-
-.cta p{
-    color:#d9e8df;
-    margin-bottom:25px;
-}
+.cta h2{ font-size:32px; margin-bottom:10px; }
+.cta p{ color:#d9e8df; margin-bottom:25px; }
 
 /* FOOTER */
 footer{
@@ -363,25 +289,11 @@ footer{
     gap:40px;
 }
 
-footer h3{
-    color:#e6bd69;
-    margin-bottom:10px;
-}
+footer h3{ color:#e6bd69; margin-bottom:10px; }
+footer p{ font-size:14px; color:#b8cbc1; }
 
-footer p{
-    font-size:14px;
-    color:#b8cbc1;
-}
-
-.footer-links a{
-    display:block;
-    margin:5px 0;
-    color:#b8cbc1;
-}
-
-.footer-links a:hover{
-    color:white;
-}
+.footer-links a{ display:block; margin:5px 0; color:#b8cbc1; }
+.footer-links a:hover{ color:white; }
 
 .copyright{
     max-width:1200px;
@@ -393,98 +305,66 @@ footer p{
     color:#8fa89d;
 }
 
+/* ADMIN LINK BUTTON */
+.admin-link{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:#123c2d;
+    color:white;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:bold;
+    box-shadow:0 5px 20px rgba(0,0,0,.25);
+    z-index:999;
+    transition:.3s;
+}
+.admin-link:hover{ background:#176b4b; transform:translateY(-2px); }
+
 /* ANIMATION */
 @keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{ opacity:0; transform:translateY(30px); }
+    to{ opacity:1; transform:translateY(0); }
 }
 
 /* MOBILE */
 @media(max-width:850px){
-
-    .topbar{
-        display:none;
-    }
+    .topbar{ display:none; }
 
     nav{
         display:none;
         position:absolute;
-        top:82px;
-        right:0;
-        left:0;
+        top:82px; right:0; left:0;
         background:white;
         flex-direction:column;
         padding:20px;
         box-shadow:0 5px 15px rgba(0,0,0,.1);
         text-align:center;
     }
+    nav.show{ display:flex; }
+    .menu-btn{ display:block; }
 
-    nav.show{
-        display:flex;
-    }
+    .hero{ min-height:500px; }
+    .hero h2{ font-size:34px; }
+    .hero p{ font-size:17px; }
 
-    .menu-btn{
-        display:block;
-    }
-
-    .hero{
-        min-height:500px;
-    }
-
-    .hero h2{
-        font-size:34px;
-    }
-
-    .hero p{
-        font-size:17px;
-    }
-
-    .cards{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .news{
-        grid-template-columns:1fr;
-    }
-
-    .about-inner{
-        grid-template-columns:1fr;
-    }
-
-    .footer-inner{
-        grid-template-columns:1fr;
-    }
+    .cards{ grid-template-columns:1fr 1fr; }
+    .news{ grid-template-columns:1fr; }
+    .gallery-grid{ grid-template-columns:1fr 1fr; }
+    .events-list{ grid-template-columns:1fr; }
+    .about-inner{ grid-template-columns:1fr; }
+    .footer-inner{ grid-template-columns:1fr; }
 }
 
 @media(max-width:500px){
+    .cards{ grid-template-columns:1fr; }
+    .gallery-grid{ grid-template-columns:1fr; }
 
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .logo-text h1{
-        font-size:17px;
-    }
-
-    .logo-icon{
-        width:43px;
-        height:43px;
-        font-size:21px;
-    }
-
-    .hero h2{
-        font-size:29px;
-    }
-
-    section{
-        padding:50px 5%;
-    }
+    .logo-text h1{ font-size:17px; }
+    .logo-icon{ width:43px; height:43px; font-size:21px; }
+    .hero h2{ font-size:29px; }
+    section{ padding:50px 5%; }
 }
 </style>
 </head>
@@ -500,7 +380,6 @@ footer p{
 <!-- HEADER -->
 <header>
     <div class="nav">
-
         <div class="logo">
             <div class="logo-icon">س</div>
             <div class="logo-text">
@@ -519,22 +398,15 @@ footer p{
             <a href="#gallery">گيلري</a>
             <a href="#contact">رابطو</a>
         </nav>
-
     </div>
 </header>
 
 <!-- HERO -->
 <div class="hero" id="home">
     <div class="hero-content">
+        <div class="hero-badge">🌿 سومرا برادري ميرپورماٿيلو</div>
 
-        <div class="hero-badge">
-            🌿 سومرا برادري ميرپورماٿيلو
-        </div>
-
-        <h2>
-            پنهنجي <span>برادري</span>،
-            پنهنجي سڃاڻپ
-        </h2>
+        <h2>پنهنجي <span>برادري</span>، پنهنجي سڃاڻپ</h2>
 
         <p>
             اتحاد، ڀائيچاري، خدمت ۽ پنهنجي تاريخ
@@ -542,21 +414,14 @@ footer p{
         </p>
 
         <div class="buttons">
-            <a class="btn btn-main" href="#about">
-                اسان بابت ڏسو
-            </a>
-
-            <a class="btn btn-outline" href="#services">
-                برادري جون خدمتون
-            </a>
+            <a class="btn btn-main" href="#about">اسان بابت ڏسو</a>
+            <a class="btn btn-outline" href="#services">برادري جون خدمتون</a>
         </div>
-
     </div>
 </div>
 
 <!-- SERVICES -->
 <section id="services">
-
     <div class="section-title">
         <small>اسان جو پليٽ فارم</small>
         <h2>سومرا برادري</h2>
@@ -564,52 +429,32 @@ footer p{
     </div>
 
     <div class="cards">
-
         <div class="card">
             <div class="card-icon">🌳</div>
             <h3>خانداني شجرو</h3>
-            <p>
-                خاندانن ۽ نسلن جو تفصيلي شجرو
-                منظم طريقي سان.
-            </p>
+            <p>خاندانن ۽ نسلن جو تفصيلي شجرو منظم طريقي سان.</p>
         </div>
-
         <div class="card">
             <div class="card-icon">📰</div>
             <h3>خبرون ۽ اعلان</h3>
-            <p>
-                برادري جا اهم اطلاع، خبرون
-                ۽ اعلان.
-            </p>
+            <p>برادري جا اهم اطلاع، خبرون ۽ اعلان.</p>
         </div>
-
         <div class="card">
             <div class="card-icon">📅</div>
             <h3>پروگرام</h3>
-            <p>
-                سماجي، مذهبي ۽ برادري جي
-                مختلف تقريبن جي معلومات.
-            </p>
+            <p>سماجي، مذهبي ۽ برادري جي مختلف تقريبن جي معلومات.</p>
         </div>
-
         <div class="card">
             <div class="card-icon">🤝</div>
             <h3>سماجي خدمت</h3>
-            <p>
-                ضرورت مند ماڻهن جي مدد ۽
-                سماجي خدمتن جي معلومات.
-            </p>
+            <p>ضرورت مند ماڻهن جي مدد ۽ سماجي خدمتن جي معلومات.</p>
         </div>
-
     </div>
-
 </section>
 
 <!-- ABOUT -->
 <div class="about" id="about">
-
     <div class="about-inner">
-
         <div>
             <div class="section-title" style="text-align:right;margin-bottom:20px;">
                 <small>اسان جي سڃاڻپ</small>
@@ -621,9 +466,7 @@ footer p{
                 ماڻهن کي هڪ Digital پليٽ فارم تي گڏ ڪرڻ لاءِ
                 تيار ڪئي پئي وڃي.
             </p>
-
             <br>
-
             <p>
                 اسان جو مقصد برادري جي تاريخ، خاندانن،
                 اهم خبرن، سماجي خدمتن ۽ برادري سان
@@ -633,140 +476,68 @@ footer p{
 
         <div class="about-box">
             <h3>🌿 اسان جو مقصد</h3>
-
-            <p>
-                <b>اتحاد</b> — هڪ ٻئي سان گڏ رهڻ.
-            </p>
-
-            <p>
-                <b>ڀائيچارو</b> — ڏک سک ۾ هڪ ٻئي جو ساٿ ڏيڻ.
-            </p>
-
-            <p>
-                <b>خدمت</b> — ضرورت مند ماڻهن جي مدد ڪرڻ.
-            </p>
-
-            <p>
-                <b>سڃاڻپ</b> — پنهنجي تاريخ ۽ نسلن کي محفوظ رکڻ.
-            </p>
+            <p><b>اتحاد</b> — هڪ ٻئي سان گڏ رهڻ.</p>
+            <p><b>ڀائيچارو</b> — ڏک سک ۾ هڪ ٻئي جو ساٿ ڏيڻ.</p>
+            <p><b>خدمت</b> — ضرورت مند ماڻهن جي مدد ڪرڻ.</p>
+            <p><b>سڃاڻپ</b> — پنهنجي تاريخ ۽ نسلن کي محفوظ رکڻ.</p>
         </div>
-
     </div>
-
 </div>
 
 <!-- NEWS -->
 <section id="news">
-
     <div class="section-title">
         <small>تازيون معلومات</small>
         <h2>خبرون ۽ اعلان</h2>
         <p>برادري جا اهم اطلاع هتي ظاهر ٿيندا</p>
     </div>
 
-    <div class="news">
-
-        <div class="news-card">
-            <div class="news-img">📢</div>
-            <div class="news-content">
-                <div class="news-date">اهم اعلان</div>
-                <h3>برادري جا اطلاع</h3>
-                <p>
-                    مستقبل ۾ هتي برادري جا تازا
-                    اعلان شايع ڪيا ويندا.
-                </p>
-            </div>
-        </div>
-
-        <div class="news-card">
-            <div class="news-img">🤲</div>
-            <div class="news-content">
-                <div class="news-date">سماجي خدمت</div>
-                <h3>خير ۽ ڀلائي جا ڪم</h3>
-                <p>
-                    سماجي خدمتن ۽ مدد سان لاڳاپيل
-                    معلومات هتي شامل ٿيندي.
-                </p>
-            </div>
-        </div>
-
-        <div class="news-card">
-            <div class="news-img">📅</div>
-            <div class="news-content">
-                <div class="news-date">تقريب</div>
-                <h3>ايندڙ پروگرام</h3>
-                <p>
-                    برادري جي ايندڙ تقريبن ۽
-                    پروگرامن جا تفصيل هتي هوندا.
-                </p>
-            </div>
-        </div>
-
+    <div class="news" id="news-container">
+        <!-- Admin مان خبرون هتي خودڪار اينديون -->
     </div>
-
 </section>
 
 <!-- GALLERY -->
 <section id="gallery" style="background:#eef4f0;max-width:none;">
-
     <div class="section-title">
         <small>اسان جون يادون</small>
         <h2>Photo Gallery</h2>
         <p>برادري جي تقريبن ۽ يادگار لمحن جون تصويرون</p>
     </div>
 
-    <div class="cards" style="max-width:1100px;margin:auto;">
+    <div class="gallery-grid" id="gallery-container" style="max-width:1100px;margin:auto;">
+        <!-- Admin مان تصويرون هتي خودڪار اينديون -->
+    </div>
+</section>
 
-        <div class="card">
-            <div class="card-icon">📷</div>
-            <h3>تقريبون</h3>
-            <p>جلد ئي تصويرون شامل ڪيون وينديون.</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🕌</div>
-            <h3>مذهبي پروگرام</h3>
-            <p>برادري جي مذهبي پروگرامن جون تصويرون.</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">👨‍👩‍👧‍👦</div>
-            <h3>برادري جون گڏجاڻيون</h3>
-            <p>اجلاسن ۽ گڏجاڻين جون يادون.</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🌿</div>
-            <h3>يادگار لمحا</h3>
-            <p>برادري سان لاڳاپيل اهم تصويرون.</p>
-        </div>
-
+<!-- EVENTS -->
+<section id="events">
+    <div class="section-title">
+        <small>ايندڙ پروگرام</small>
+        <h2>تقريبون ۽ پروگرام</h2>
+        <p>برادري جي تقريبن ۽ پروگرامن جا تفصيل</p>
     </div>
 
+    <div class="events-list" id="events-container">
+        <!-- Admin مان تقريبون هتي خودڪار اينديون -->
+    </div>
 </section>
 
 <!-- CTA -->
 <div class="cta">
     <h2>اچو ته پنهنجي برادري کي گڏجي مضبوط بڻايون</h2>
-
     <p>
         اتحاد، خدمت ۽ ڀائيچاري سان
         پنهنجي ايندڙ نسل لاءِ هڪ بهتر سڃاڻپ ڇڏيون.
     </p>
-
-    <a class="btn btn-main" href="#contact">
-        رابطو ڪريو
-    </a>
+    <a class="btn btn-main" href="#contact">رابطو ڪريو</a>
 </div>
 
 <!-- FOOTER -->
 <footer id="contact">
-
     <div class="footer-inner">
-
         <div>
             <h3>سومرا برادري ميرپورماٿيلو</h3>
-
             <p>
                 هي Digital Platform برادري جي
                 معلومات، تاريخ، اتحاد ۽ سماجي خدمتن
@@ -787,23 +558,104 @@ footer p{
             <p>ميرپورماٿيلو، ضلعو گھوٽڪي، سنڌ</p>
             <p>سومرا برادري</p>
         </div>
-
     </div>
 
     <div class="copyright">
         © 2026 سومرا برادري ميرپورماٿيلو — سڀ حق محفوظ
     </div>
-
 </footer>
 
+<!-- ADMIN LINK -->
+<a href="admin-login.html" class="admin-link">🔐 Admin</a>
+
 <script>
-
 function toggleMenu(){
-
     document.getElementById("menu").classList.toggle("show");
-
 }
 
+// ===== Admin مان خبرون، تصويرون ۽ تقريبون پڙهو =====
+
+// ===== خبرون =====
+const news = JSON.parse(localStorage.getItem("somra_news") || "[]");
+const newsContainer = document.getElementById("news-container");
+
+if (news.length === 0) {
+    newsContainer.innerHTML = `
+        <div class="empty-msg" style="grid-column:1/-1;">
+            <span class="icon">📰</span>
+            <p>اڃا ڪا به خبر شامل نه ڪئي وئي آهي.</p>
+        </div>
+    `;
+} else {
+    newsContainer.innerHTML = news.map(n => `
+        <div class="news-card">
+            <div class="news-img">📢</div>
+            <div class="news-content">
+                <div class="news-date">📅 ${n.date}</div>
+                <h3>${escapeHtml(n.title)}</h3>
+                <p>${escapeHtml(n.desc)}</p>
+            </div>
+        </div>
+    `).join("");
+}
+
+// ===== گيلري =====
+const gallery = JSON.parse(localStorage.getItem("somra_gallery") || "[]");
+const galleryContainer = document.getElementById("gallery-container");
+
+if (gallery.length === 0) {
+    galleryContainer.innerHTML = `
+        <div class="empty-msg" style="grid-column:1/-1;">
+            <span class="icon">📸</span>
+            <p>اڃا ڪا به تصوير شامل نه ڪئي وئي آهي.</p>
+        </div>
+    `;
+} else {
+    galleryContainer.innerHTML = gallery.map(g => `
+        <div class="gallery-item">
+            <img src="${escapeHtml(g.url)}" alt="${escapeHtml(g.title)}" onerror="this.src='https://via.placeholder.com/400x200?text=Image'">
+            <div class="gallery-info">
+                <h3>${escapeHtml(g.title)}</h3>
+                <p>${escapeHtml(g.desc || "")}</p>
+            </div>
+        </div>
+    `).join("");
+}
+
+// ===== تقريبون =====
+const events = JSON.parse(localStorage.getItem("somra_events") || "[]");
+const eventsContainer = document.getElementById("events-container");
+
+if (events.length === 0) {
+    eventsContainer.innerHTML = `
+        <div class="empty-msg" style="grid-column:1/-1;">
+            <span class="icon">📅</span>
+            <p>اڃا ڪا به تقريب شامل نه ڪئي وئي آهي.</p>
+        </div>
+    `;
+} else {
+    eventsContainer.innerHTML = events.map(e => `
+        <div class="event-item">
+            <h3>${escapeHtml(e.title)}</h3>
+            <div class="event-meta">
+                📅 ${e.date}
+                ${e.place ? " • 📍 " + escapeHtml(e.place) : ""}
+            </div>
+            <p>${escapeHtml(e.desc || "")}</p>
+        </div>
+    `).join("");
+}
+
+// ===== خاندان (اختياري) =====
+const family = JSON.parse(localStorage.getItem("somra_family") || "[]");
+console.log("خاندان:", family.length, "شامل ٿيل");
+
+// ===== HTML Escaping =====
+function escapeHtml(s) {
+    return String(s || "").replace(/[&<>"']/g, c => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    })[c]);
+}
 </script>
 
 </body>
